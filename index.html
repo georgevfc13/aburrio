@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Eres falsa?</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background: #fbeaff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    h1 {
+      font-size: 3rem;
+      color: #8e44ad;
+      margin-bottom: 30px;
+    }
+
+    .button-container {
+      display: flex;
+      gap: 20px;
+    }
+
+    button {
+      padding: 15px 30px;
+      font-size: 1.2rem;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    #shi {
+      background-color: #ff6f91;
+      color: white;
+    }
+
+    #ño {
+      background-color: #6fcf97;
+      color: white;
+    }
+
+    .card {
+      margin-top: 30px;
+      padding: 20px;
+      background-color: white;
+      border: 2px solid #8e44ad;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <h1>¿Eres falsa?</h1>
+  <div class="button-container">
+    <button id="shi">shi</button>
+    <button id="ño">ño</button>
+  </div>
+  <div class="card" id="card">
+    <p>ya sabía, váyase con Bags y el amigo de Juliana</p>
+  </div>
+
+  <script>
+    const shiBtn = document.getElementById("shi");
+    const ñoBtn = document.getElementById("ño");
+    const card = document.getElementById("card");
+
+    let clickCount = 0;
+
+    ñoBtn.addEventListener("click", () => {
+      clickCount++;
+
+      let newShiSize = 1.2 + clickCount * 0.2;
+      let newÑoSize = Math.max(1.2 - clickCount * 0.1, 0);
+
+      shiBtn.style.transform = `scale(${newShiSize})`;
+      ñoBtn.style.transform = `scale(${newÑoSize})`;
+
+      if (newÑoSize <= 0.1) {
+        ñoBtn.style.display = "none";
+      }
+    });
+
+    shiBtn.addEventListener("click", () => {
+      card.style.display = "block";
+    });
+  </script>
+</body>
+</html>
